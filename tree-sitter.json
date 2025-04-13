@@ -1,0 +1,40 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "todofiles",
+      "camelcase": "Todofiles",
+      "title": "Todofiles",
+      "scope": "source.todofiles",
+      "file-types": [
+        ".todo",
+        ".TODO"
+      ],
+      "injection-regex": "^todofiles$",
+      "class-name": "TreeSitterTodofiles"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "tree sitter grammar for dotTodo files",
+    "authors": [
+      {
+        "name": "Anders Johannessen",
+        "email": "tstodo@mikosaurus.net"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/mikosaurus/tree-sitter-todofiles"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
