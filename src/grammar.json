@@ -14,8 +14,38 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "_category"
+        }
+      ]
+    },
+    "_category": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
           "name": "category_definition"
         },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_category"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "data"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "task": {
+      "type": "CHOICE",
+      "members": [
         {
           "type": "SYMBOL",
           "name": "todo_definition"
@@ -31,10 +61,28 @@
         {
           "type": "SYMBOL",
           "name": "cancelled_definition"
-        },
+        }
+      ]
+    },
+    "info": {
+      "type": "CHOICE",
+      "members": [
         {
           "type": "SYMBOL",
           "name": "info_expression"
+        }
+      ]
+    },
+    "data": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "task"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "info"
         }
       ]
     },
@@ -68,11 +116,19 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "REPEAT",
-            "content": {
-              "type": "PATTERN",
-              "value": "\\t"
-            }
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "PATTERN",
+                  "value": "\\t"
+                }
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
           },
           {
             "type": "PATTERN",
@@ -80,7 +136,11 @@
           },
           {
             "type": "PATTERN",
-            "value": ":\\n"
+            "value": ":"
+          },
+          {
+            "type": "PATTERN",
+            "value": "\\n"
           }
         ]
       }
@@ -255,7 +315,11 @@
       "value": "\\s"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "_category"
+    ]
+  ],
   "precedences": [],
   "externals": [],
   "inline": [],

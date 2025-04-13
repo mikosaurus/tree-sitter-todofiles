@@ -30,6 +30,25 @@
     }
   },
   {
+    "type": "data",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "info",
+          "named": true
+        },
+        {
+          "type": "task",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "done_definition",
     "named": true,
     "fields": {},
@@ -45,6 +64,21 @@
     }
   },
   {
+    "type": "info",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "info_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
@@ -54,27 +88,11 @@
       "required": false,
       "types": [
         {
-          "type": "cancelled_definition",
-          "named": true
-        },
-        {
           "type": "category_definition",
           "named": true
         },
         {
-          "type": "done_definition",
-          "named": true
-        },
-        {
-          "type": "info_expression",
-          "named": true
-        },
-        {
-          "type": "started_definition",
-          "named": true
-        },
-        {
-          "type": "todo_definition",
+          "type": "data",
           "named": true
         }
       ]
@@ -90,6 +108,33 @@
       "types": [
         {
           "type": "started_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "task",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "cancelled_definition",
+          "named": true
+        },
+        {
+          "type": "done_definition",
+          "named": true
+        },
+        {
+          "type": "started_definition",
+          "named": true
+        },
+        {
+          "type": "todo_definition",
           "named": true
         }
       ]
