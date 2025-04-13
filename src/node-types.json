@@ -1,0 +1,137 @@
+[
+  {
+    "type": "cancelled_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "cancelled_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "category_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "category_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "done_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "done_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "cancelled_definition",
+          "named": true
+        },
+        {
+          "type": "category_definition",
+          "named": true
+        },
+        {
+          "type": "done_definition",
+          "named": true
+        },
+        {
+          "type": "info_expression",
+          "named": true
+        },
+        {
+          "type": "started_definition",
+          "named": true
+        },
+        {
+          "type": "todo_definition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "started_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "started_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "todo_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "todo_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "cancelled_expression",
+    "named": true
+  },
+  {
+    "type": "category_expression",
+    "named": true
+  },
+  {
+    "type": "done_expression",
+    "named": true
+  },
+  {
+    "type": "info_expression",
+    "named": true
+  },
+  {
+    "type": "started_expression",
+    "named": true
+  },
+  {
+    "type": "todo_expression",
+    "named": true
+  }
+]

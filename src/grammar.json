@@ -1,0 +1,264 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
+  "name": "todofiles",
+  "rules": {
+    "source_file": {
+      "type": "REPEAT",
+      "content": {
+        "type": "SYMBOL",
+        "name": "_definition"
+      }
+    },
+    "_definition": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "category_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "todo_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "started_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "done_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "cancelled_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "info_expression"
+        }
+      ]
+    },
+    "category_definition": {
+      "type": "SYMBOL",
+      "name": "category_expression"
+    },
+    "todo_definition": {
+      "type": "SYMBOL",
+      "name": "todo_expression"
+    },
+    "started_definition": {
+      "type": "SYMBOL",
+      "name": "started_expression"
+    },
+    "done_definition": {
+      "type": "SYMBOL",
+      "name": "done_expression"
+    },
+    "cancelled_definition": {
+      "type": "SYMBOL",
+      "name": "cancelled_expression"
+    },
+    "info_definition": {
+      "type": "SYMBOL",
+      "name": "info_expression"
+    },
+    "category_expression": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "PATTERN",
+              "value": "\\t"
+            }
+          },
+          {
+            "type": "PATTERN",
+            "value": ".*"
+          },
+          {
+            "type": "PATTERN",
+            "value": ":\\n"
+          }
+        ]
+      }
+    },
+    "todo_expression": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "PATTERN",
+              "value": "\\t"
+            }
+          },
+          {
+            "type": "PATTERN",
+            "value": "\\x{2610} "
+          },
+          {
+            "type": "PATTERN",
+            "value": ".*"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "\\n"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "started_expression": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "PATTERN",
+              "value": "\\t"
+            }
+          },
+          {
+            "type": "PATTERN",
+            "value": "\\x{2610} "
+          },
+          {
+            "type": "PATTERN",
+            "value": ".*"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "@started\\(\\d{2,4}.\\d{2}.\\d{2} \\d{2}:\\d{2}\\)\\n"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "done_expression": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "PATTERN",
+              "value": "\\t"
+            }
+          },
+          {
+            "type": "PATTERN",
+            "value": "\\x{2714} "
+          },
+          {
+            "type": "PATTERN",
+            "value": ".*"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "@done\\(\\d{2,4}.\\d{2}.\\d{2} \\d{2}:\\d{2}\\)\\n"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "cancelled_expression": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "PATTERN",
+              "value": "\\t"
+            }
+          },
+          {
+            "type": "PATTERN",
+            "value": "\\x{2612} "
+          },
+          {
+            "type": "PATTERN",
+            "value": ".*"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "@cancelled\\(\\d{2,4}.\\d{2}.\\d{2} \\d{2}:\\d{2}\\)\\n"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "info_expression": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "PATTERN",
+              "value": "\\t"
+            }
+          },
+          {
+            "type": "PATTERN",
+            "value": ".*"
+          },
+          {
+            "type": "PATTERN",
+            "value": "\\n"
+          }
+        ]
+      }
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": [],
+  "reserved": {}
+}
