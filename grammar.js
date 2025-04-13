@@ -26,28 +26,38 @@ module.exports = grammar({
     ),
 
     task: $ => choice(
-      $.todo_definition,
-      $.started_definition,
-      $.done_definition,
-      $.cancelled_definition
+        $.todo_definition,
+        // seq($.todo_definition, $.newline),
+        seq($.done_definition, $.done_tag),
+        seq($.cancelled_definition, $.cancelled_tag),
     ),
 
-    info: $ => choice($.info_expression),
-    data: $ => choice($.task, $.info),
+    comment: $ => choice($.comment_expression),
+    data: $ => choice($.task, $.comment),
+    newline: $ => token(/\n?/),
 
     category_definition: $ => $.category_expression,
     todo_definition: $ => $.todo_expression,
-    started_definition: $ => $.started_expression,
     done_definition: $ => $.done_expression,
     cancelled_definition: $ => $.cancelled_expression,
-    info_definition: $ => $.info_expression,
+    comment_definition: $ => $.comment_expression,
 
-    category_expression: $ => token(seq(optional(repeat(/\t/)), /.*/, /:/, /\n/)), 
-    todo_expression: $ => token(seq(repeat(/\t/), /\x{2610} /, /.*/, optional(/\n/))),
-    started_expression: $ => token(seq(repeat(/\t/), /\x{2610} /, /.*/, optional(/@started\(\d{2,4}.\d{2}.\d{2} \d{2}:\d{2}\)\n/))),
-    done_expression: $ => token(seq(repeat(/\t/), /\x{2714} /, /.*/, optional(/@done\(\d{2,4}.\d{2}.\d{2} \d{2}:\d{2}\)\n/))),
-    cancelled_expression: $ => token(seq(repeat(/\t/), /\x{2612} /, /.*/, optional(/@cancelled\(\d{2,4}.\d{2}.\d{2} \d{2}:\d{2}\)\n/))),
-    info_expression: $ => token(seq(repeat(/\t/), /.*/,/\n/)),
+    done_tag: _ =>      token(/@done.*/),
+    cancelled_tag: $ => token(/@cancelled.*/),
+    // done_tag: _ =>      token(/@done.*\n?/),
+    // cancelled_tag: $ => token(/@cancelled.*\n?/),
+
+    category_expression: $ =>  token(seq(/.*/, /:/)), 
+    todo_expression: $ =>      token(seq(/\x{2610} /, /.*/)), 
+    done_expression: $ =>      token(seq(/\x{2714} /, /.*/)), 
+    cancelled_expression: $ => token(seq(/\x{2612} /, /.*/)), 
+    // category_expression: $ =>  token(seq(optional(repeat(/\t/)), /.*/, /:/, /\n?/)), 
+    // todo_expression: $ => token(seq(repeat(/\t/), /\x{2610} /, /.*/, optional(/\n/))),
+    // started_expression: $ => token(seq(repeat(/\t/), /\x{2610} /, /.*/, optional(/@started\(\d{2,4}.\d{2}.\d{2} \d{2}:\d{2}\)\n/))),
+    // done_expression: $ => token(seq(repeat(/\t/), /\x{2714} /, /.*/, optional(/@done\(\d{2,4}.\d{2}.\d{2} \d{2}:\d{2}\)\n/))),
+    // cancelled_expression: $ => token(seq(repeat(/\t/), /\x{2612} /, /.*/, optional(/@cancelled\(\d{2,4}.\d{2}.\d{2} \d{2}:\d{2}\)\n/))),
+    comment_expression: $ => token(seq(repeat(/\t/), /# .*/)),
+    // comment_expression: $ => token(seq(repeat(/\t/), /# .*/,/\n/)),
 
   }
 });

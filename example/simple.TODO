@@ -1,12 +1,10 @@
 Syntax i want:
-    Text that is not comment But if info
+    # Text that is not comment But if info
     # Some text here
     # ":" Highlights a category
     ☐ List Controller
     ☐ List Controller @started(25-02-27 10:42)
     ☐ List Controller @started(25-02-27 10:42) This is also not a "Started match"
-
-Health controller:
+Health Controller:
     ✔ Health Controller @done(25-02-27 10:43)
     ☒ Health Controller @cancelled(25-02-27 10:43)
-

@@ -1,3 +1,12 @@
 Syntax i want:
-    ☐ List Controller
-
+	# info text goes here
+	☐ List Controller
+		# or here
+		# asdasd
+New category:
+        #	✔ Completed thing @done(12-12-12 12:12)
+        # asdasd
+		# asdasd
+	☒ Cancelled thingy @cancelled(12-12-12 12:12)
+	☒ Cancelled thingy @cancelled(12-12-12 12:12)
+    # asdasd 
