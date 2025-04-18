@@ -7,11 +7,12 @@
       "title": "Todofiles",
       "scope": "source.todofiles",
       "file-types": [
-        ".todo",
-        ".TODO"
+        "todo",
+        "TODO"
       ],
       "injection-regex": "^todofiles$",
-      "class-name": "TreeSitterTodofiles"
+      "class-name": "TreeSitterTodofiles",
+      "highlights": "queries/todofiles/highlights.scm"
     }
   ],
   "metadata": {
