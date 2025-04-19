@@ -1,6 +1,6 @@
 [
   {
-    "type": "cancelled_definition",
+    "type": "cancelled",
     "named": true,
     "fields": {},
     "children": {
@@ -12,26 +12,16 @@
           "named": true
         },
         {
-          "type": "cancelled_tag",
+          "type": "statement",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "category_definition",
+    "type": "category",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "category_expression",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "comment",
@@ -39,7 +29,7 @@
     "fields": {}
   },
   {
-    "type": "done_definition",
+    "type": "done",
     "named": true,
     "fields": {},
     "children": {
@@ -51,7 +41,7 @@
           "named": true
         },
         {
-          "type": "done_tag",
+          "type": "statement",
           "named": true
         }
       ]
@@ -67,7 +57,11 @@
       "required": false,
       "types": [
         {
-          "type": "category_definition",
+          "type": "category",
+          "named": true
+        },
+        {
+          "type": "comment",
           "named": true
         },
         {
@@ -78,6 +72,11 @@
     }
   },
   {
+    "type": "statement",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "task",
     "named": true,
     "fields": {},
@@ -86,34 +85,34 @@
       "required": true,
       "types": [
         {
-          "type": "cancelled_definition",
+          "type": "cancelled",
           "named": true
         },
         {
-          "type": "comment",
+          "type": "done",
           "named": true
         },
         {
-          "type": "done_definition",
-          "named": true
-        },
-        {
-          "type": "todo_definition",
+          "type": "todo",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "todo_definition",
+    "type": "todo",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "checkbox",
+          "named": true
+        },
+        {
+          "type": "statement",
           "named": true
         }
       ]
@@ -124,23 +123,11 @@
     "named": true
   },
   {
-    "type": "cancelled_tag",
-    "named": true
-  },
-  {
-    "type": "category_expression",
-    "named": true
-  },
-  {
     "type": "checkbox",
     "named": true
   },
   {
     "type": "checkmark",
-    "named": true
-  },
-  {
-    "type": "done_tag",
     "named": true
   }
 ]

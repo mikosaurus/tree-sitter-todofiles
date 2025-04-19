@@ -14,34 +14,34 @@ module.exports = grammar({
     source_file: $ => repeat($._definition),
 
     _definition: $ => choice(
-      $._category,
+      $.category,
       $.task,
-    ),
-
-    _category: $ => seq(
-      $.category_definition,
-    ),
-
-    task: $ => choice(
-      $.todo_definition,
-      $.done_definition,
-      $.cancelled_definition,
       $.comment,
     ),
 
-    done_tag: $ => /@done\(\d{2,4}.\d{2}.\d{2} \d{2}:\d{2}\)\n/,
-    cancelled_tag: $ => /@cancelled\(\d{2,4}.\d{2}.\d{2} \d{2}:\d{2}\)\n/,
+    category: $ => seq(
+      $._category_definition,
+    ),
+
+    task: $ => choice(
+      $.todo,
+      $.done,
+      $.cancelled,
+    ),
+
     checkbox: $ => /\x{2610}/,
     checkmark: $ => /\x{2714}/,
     cancelled_mark: $ => /\x{2612}/,
+    statement: $ => /.*/,
 
-    category_definition: $ => seq(optional(repeat(/\t/)), $.category_expression,),
-    todo_definition: $ => seq(optional(repeat(/\t/)), $.checkbox, /.*/, /\n/),
-    done_definition: $ => seq(optional(repeat(/\t/)), $.checkmark, /.*/, $.done_tag),
-    cancelled_definition: $ => seq(optional(repeat(/\t/)), $.cancelled_mark, /.*/, $.cancelled_tag),
+    _category_definition: $ =>  seq($._category_expression),
+    todo: $ =>      seq($.checkbox, $.statement),
+    done: $ =>      seq($.checkmark, $.statement),
+    cancelled: $ => seq($.cancelled_mark, $.statement),
 
-    category_expression: $ => token(seq(optional(repeat(/\t/)), /.*/, /:/, /\n/)), 
-    comment:$ => seq(/#/, /.*/),
+    _category_expression: $ => token(seq(/.*/, /:/, /\n/)), 
+    _comment_identifier: $ => /#/,
+    comment:$ => seq($._comment_identifier, /.*/),
 
   }
 });

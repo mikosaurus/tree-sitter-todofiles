@@ -14,20 +14,24 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_category"
+          "name": "category"
         },
         {
           "type": "SYMBOL",
           "name": "task"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "comment"
         }
       ]
     },
-    "_category": {
+    "category": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "category_definition"
+          "name": "_category_definition"
         }
       ]
     },
@@ -36,29 +40,17 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "todo_definition"
+          "name": "todo"
         },
         {
           "type": "SYMBOL",
-          "name": "done_definition"
+          "name": "done"
         },
         {
           "type": "SYMBOL",
-          "name": "cancelled_definition"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "comment"
+          "name": "cancelled"
         }
       ]
-    },
-    "done_tag": {
-      "type": "PATTERN",
-      "value": "@done\\(\\d{2,4}.\\d{2}.\\d{2} \\d{2}:\\d{2}\\)\\n"
-    },
-    "cancelled_tag": {
-      "type": "PATTERN",
-      "value": "@cancelled\\(\\d{2,4}.\\d{2}.\\d{2} \\d{2}:\\d{2}\\)\\n"
     },
     "checkbox": {
       "type": "PATTERN",
@@ -72,146 +64,63 @@
       "type": "PATTERN",
       "value": "\\x{2612}"
     },
-    "category_definition": {
+    "statement": {
+      "type": "PATTERN",
+      "value": ".*"
+    },
+    "_category_definition": {
       "type": "SEQ",
       "members": [
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "PATTERN",
-                "value": "\\t"
-              }
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
           "type": "SYMBOL",
-          "name": "category_expression"
+          "name": "_category_expression"
         }
       ]
     },
-    "todo_definition": {
+    "todo": {
       "type": "SEQ",
       "members": [
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "PATTERN",
-                "value": "\\t"
-              }
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
         {
           "type": "SYMBOL",
           "name": "checkbox"
         },
         {
-          "type": "PATTERN",
-          "value": ".*"
-        },
-        {
-          "type": "PATTERN",
-          "value": "\\n"
+          "type": "SYMBOL",
+          "name": "statement"
         }
       ]
     },
-    "done_definition": {
+    "done": {
       "type": "SEQ",
       "members": [
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "PATTERN",
-                "value": "\\t"
-              }
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
         {
           "type": "SYMBOL",
           "name": "checkmark"
         },
         {
-          "type": "PATTERN",
-          "value": ".*"
-        },
-        {
           "type": "SYMBOL",
-          "name": "done_tag"
+          "name": "statement"
         }
       ]
     },
-    "cancelled_definition": {
+    "cancelled": {
       "type": "SEQ",
       "members": [
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "PATTERN",
-                "value": "\\t"
-              }
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
         {
           "type": "SYMBOL",
           "name": "cancelled_mark"
         },
         {
-          "type": "PATTERN",
-          "value": ".*"
-        },
-        {
           "type": "SYMBOL",
-          "name": "cancelled_tag"
+          "name": "statement"
         }
       ]
     },
-    "category_expression": {
+    "_category_expression": {
       "type": "TOKEN",
       "content": {
         "type": "SEQ",
         "members": [
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "REPEAT",
-                "content": {
-                  "type": "PATTERN",
-                  "value": "\\t"
-                }
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          },
           {
             "type": "PATTERN",
             "value": ".*"
@@ -227,12 +136,16 @@
         ]
       }
     },
+    "_comment_identifier": {
+      "type": "PATTERN",
+      "value": "#"
+    },
     "comment": {
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "#"
+          "type": "SYMBOL",
+          "name": "_comment_identifier"
         },
         {
           "type": "PATTERN",

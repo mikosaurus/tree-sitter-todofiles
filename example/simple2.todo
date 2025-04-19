@@ -1,3 +1,12 @@
 Syntax i want:
+    ✔ List Controller
+
+
+Test:
     ☐ List Controller
+    ☐ List Controller
+    # something was completed
+
+    ✔ Health Controller @done(25-02-27 10:43)
+    ☒ Health Controller @cancelled(25-02-27 10:43)
 

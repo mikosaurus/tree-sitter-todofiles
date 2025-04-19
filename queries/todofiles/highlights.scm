@@ -1,4 +1,4 @@
-(category_definition) @category
+(category) @function.builtin
 (comment) @comment
-(todo_definition) @todo
-
+(task) @string
+(source_file) @comment

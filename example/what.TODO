@@ -1,35 +1,37 @@
 Syntax i want:
 	Visuals:
-		# ":" Highlights a category
+		# a@":" Highlights a category
 
 		# Checkbox for tasks that at not complete or started on
 		☐ List Controller
 
 		# @started with timestamp when a task has been started
-		☐ List Controller @started(25-02-27 10:30)
+        
+		☐ @List Controller @started(25-02-27 10:30)
 
 		# Checkmark for completed, as well as a @done marker and when 
         # something was completed
 		✔ Health Controller @done(25-02-27 10:43)
 	    ☒ Health Controller @cancelled(25-02-27 10:43)
 	Shortcuts:
-		Alt+c should mark a line as "complete" with a checkmark
+		✔ Health Controller @done(25-02-27 10:43)
+	    ☒ Health Controller @cancelled(25-02-27 10:43)
+		# Alt+c should mark a line as "complete" with a checkmark
 		Alt+s should mark a line as "started"
 		Using Alt+c or Alt+s on a line with the same status should remove status
 		
 	Indentation:
-		Lines should be indented after these ":" categories
+	    # Lines should be indented after these ":" categories
 
 	Counting of amound of tasks in each catagory:
-		Next to each category (line with ":" at the end) should have a "(3)" to
-        count out the amount of empty checkboxes or checkmarks there is in a category
-			Text that is indented in one time without a ":" should be
-            colored in a way to indicate that it is a comment or supplimentary 
-            text to a task
-
+		# Next to each category (line with ":" at the end) should have a "(3)" to
+        # count out the amount of empty checkboxes or checkmarks there is in a category
+			# Text that is indented in one time without a ":" should be
+            # colored in a way to indicate that it is a comment or supplimentary 
+            # text to a task
 
 Where to start:
-	Google how to trigger color syntax for specific files
-	Google how to add special keybindings in vim for files with a specific extension
-	Find the unicode for "checkbox ☐"  and "checkmark✔ " potentially something for started
+	# Google how to trigger color syntax for specific files
+	# Google how to add special keybindings in vim for files with a specific extension
+	# Find the unicode for "checkbox ☐"  and "checkmark✔ " potentially something for started
 
