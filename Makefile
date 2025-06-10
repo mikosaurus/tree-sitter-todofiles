@@ -6,7 +6,6 @@ LANGUAGE_NAME := tree-sitter-todofiles
 HOMEPAGE_URL := https://github.com/mikosaurus/tree-sitter-todofiles
 VERSION := 0.1.0
 
-# repository
 SRC_DIR := src
 
 TS ?= tree-sitter
