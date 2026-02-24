@@ -1,0 +1,6 @@
+What to improve:
+    ☐ Look into how to get newlines to always fit what is written above
+        Currently in my neovim config at least, if i go to a category (eg line 1 this file)
+        and press "o" the cursor will be set to col 0 instead of being indented once
+    ☐ Look into "de-denting"
+
