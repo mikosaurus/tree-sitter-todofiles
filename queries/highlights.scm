@@ -4,7 +4,7 @@
 (done) @done
 (cancelled) @cancelled
 
-(tag_done)      @string
-(tag_started)   @type
-(tag_cancelled) @keyword
+(tag_done)      @tag.done
+(tag_started)   @tag.started
+(tag_cancelled) @tag.cancelled
 
