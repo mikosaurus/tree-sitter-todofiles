@@ -8,11 +8,27 @@
       "required": true,
       "types": [
         {
+          "type": "at_word",
+          "named": true
+        },
+        {
           "type": "cancelled_mark",
           "named": true
         },
         {
-          "type": "statement",
+          "type": "tag_cancelled",
+          "named": true
+        },
+        {
+          "type": "tag_done",
+          "named": true
+        },
+        {
+          "type": "tag_started",
+          "named": true
+        },
+        {
+          "type": "task_text",
           "named": true
         }
       ]
@@ -32,11 +48,27 @@
       "required": true,
       "types": [
         {
+          "type": "at_word",
+          "named": true
+        },
+        {
           "type": "checkmark",
           "named": true
         },
         {
-          "type": "statement",
+          "type": "tag_cancelled",
+          "named": true
+        },
+        {
+          "type": "tag_done",
+          "named": true
+        },
+        {
+          "type": "tag_started",
+          "named": true
+        },
+        {
+          "type": "task_text",
           "named": true
         }
       ]
@@ -98,15 +130,35 @@
       "required": true,
       "types": [
         {
+          "type": "at_word",
+          "named": true
+        },
+        {
           "type": "checkbox",
           "named": true
         },
         {
-          "type": "statement",
+          "type": "tag_cancelled",
+          "named": true
+        },
+        {
+          "type": "tag_done",
+          "named": true
+        },
+        {
+          "type": "tag_started",
+          "named": true
+        },
+        {
+          "type": "task_text",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "at_word",
+    "named": true
   },
   {
     "type": "cancelled_mark",
@@ -125,7 +177,19 @@
     "named": true
   },
   {
-    "type": "statement",
+    "type": "tag_cancelled",
+    "named": true
+  },
+  {
+    "type": "tag_done",
+    "named": true
+  },
+  {
+    "type": "tag_started",
+    "named": true
+  },
+  {
+    "type": "task_text",
     "named": true
   }
 ]

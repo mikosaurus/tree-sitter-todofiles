@@ -3,37 +3,76 @@
   "name": "todofiles",
   "rules": {
     "source_file": {
-      "type": "REPEAT",
-      "content": {
-        "type": "SYMBOL",
-        "name": "_definition"
-      }
-    },
-    "_definition": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "category"
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "category"
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "task"
+                  },
+                  {
+                    "type": "PATTERN",
+                    "value": "\\n"
+                  }
+                ]
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "comment"
+                  },
+                  {
+                    "type": "PATTERN",
+                    "value": "\\n"
+                  }
+                ]
+              },
+              {
+                "type": "PATTERN",
+                "value": "\\n"
+              }
+            ]
+          }
         },
         {
-          "type": "SYMBOL",
-          "name": "task"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "comment"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "task"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "comment"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
     "category": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_category_definition"
-        }
-      ]
+      "type": "SYMBOL",
+      "name": "_category_definition"
     },
     "task": {
       "type": "CHOICE",
@@ -64,9 +103,53 @@
       "type": "PATTERN",
       "value": "☒"
     },
-    "statement": {
+    "task_text": {
       "type": "PATTERN",
-      "value": ".*"
+      "value": "[^@\\n]+"
+    },
+    "at_word": {
+      "type": "PATTERN",
+      "value": "@[^\\s\\n(]*"
+    },
+    "tag_done": {
+      "type": "PATTERN",
+      "value": "@done\\([^)]*\\)"
+    },
+    "tag_started": {
+      "type": "PATTERN",
+      "value": "@started\\([^)]*\\)"
+    },
+    "tag_cancelled": {
+      "type": "PATTERN",
+      "value": "@cancelled\\([^)]*\\)"
+    },
+    "_task_body": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "task_text"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "at_word"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "tag_done"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "tag_started"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "tag_cancelled"
+          }
+        ]
+      }
     },
     "_category_definition": {
       "type": "SEQ",
@@ -85,8 +168,16 @@
           "name": "checkbox"
         },
         {
-          "type": "SYMBOL",
-          "name": "statement"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_task_body"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -98,8 +189,16 @@
           "name": "checkmark"
         },
         {
-          "type": "SYMBOL",
-          "name": "statement"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_task_body"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -111,8 +210,16 @@
           "name": "cancelled_mark"
         },
         {
-          "type": "SYMBOL",
-          "name": "statement"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_task_body"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -144,7 +251,7 @@
   "extras": [
     {
       "type": "PATTERN",
-      "value": "\\s"
+      "value": "[^\\S\\n]"
     }
   ],
   "conflicts": [],
