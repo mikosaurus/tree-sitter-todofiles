@@ -7,6 +7,11 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
+const CHECKBOX      = '\u2610'; // ☐
+const CHECKMARK     = '\u2714'; // ✔
+const CANCELLED_MARK = '\u2612'; // ☒
+const TASK_MARKS = CHECKBOX + CHECKMARK + CANCELLED_MARK;
+
 module.exports = grammar({
   name: "todofiles",
 
@@ -29,9 +34,9 @@ module.exports = grammar({
       $.cancelled,
     ),
 
-    checkbox: $ => /\x{2610}/,
-    checkmark: $ => /\x{2714}/,
-    cancelled_mark: $ => /\x{2612}/,
+    checkbox: $ => new RegExp(CHECKBOX),
+    checkmark: $ => new RegExp(CHECKMARK),
+    cancelled_mark: $ => new RegExp(CANCELLED_MARK),
     statement: $ => /.*/,
 
     _category_definition: $ =>  seq($._category_expression),
@@ -39,9 +44,8 @@ module.exports = grammar({
     done: $ =>      seq($.checkmark, $.statement),
     cancelled: $ => seq($.cancelled_mark, $.statement),
 
-    _category_expression: $ => token(seq(/.*/, /:/, /\n/)), 
-    _comment_identifier: $ => /#/,
-    comment:$ => seq($._comment_identifier, /.*/),
+    _category_expression: $ => token(seq(/.*/, /:/, /\n/)),
+    comment: $ => new RegExp(`[^${TASK_MARKS}\\s].*[^:\\n]|[^${TASK_MARKS}\\s:\\n]`),
 
   }
 });

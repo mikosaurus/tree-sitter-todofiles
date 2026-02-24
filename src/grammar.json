@@ -54,15 +54,15 @@
     },
     "checkbox": {
       "type": "PATTERN",
-      "value": "\\x{2610}"
+      "value": "☐"
     },
     "checkmark": {
       "type": "PATTERN",
-      "value": "\\x{2714}"
+      "value": "✔"
     },
     "cancelled_mark": {
       "type": "PATTERN",
-      "value": "\\x{2612}"
+      "value": "☒"
     },
     "statement": {
       "type": "PATTERN",
@@ -136,22 +136,9 @@
         ]
       }
     },
-    "_comment_identifier": {
-      "type": "PATTERN",
-      "value": "#"
-    },
     "comment": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_comment_identifier"
-        },
-        {
-          "type": "PATTERN",
-          "value": ".*"
-        }
-      ]
+      "type": "PATTERN",
+      "value": "[^☐✔☒\\s].*[^:\\n]|[^☐✔☒\\s:\\n]"
     }
   },
   "extras": [
